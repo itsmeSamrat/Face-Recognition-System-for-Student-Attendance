@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Face Recognition System</title>
+
+    <link
+      href="{{ url_for('static', filename='styles/student.css') }}"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"
+    />
+    <!-- Font Awesome CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <h1>Student Profile</h1>
+    <div class="student-profile py-4">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="card shadow-sm">
+              <div class="card-header bg-transparent text-center">
+                <img
+                  class="profile_img"
+                  src="{{ url_for('static', filename='Files/Images/'+ data.studentInfo.id +'.jpg') }}"
+                  alt="student dp"
+                />
+                <h3>{{ data.studentInfo.name }}</h3>
+              </div>
+              <div class="card-body">
+                <p class="mb-0">
+                  <strong class="pr-1">Student ID:</strong>{{
+                  data.studentInfo.id }}
+                </p>
+                <p class="mb-0">
+                  <strong class="pr-1">Date of Birth:</strong>{{
+                  data.studentInfo.dob }}
+                </p>
+                <p class="mb-0">
+                  <strong class="pr-1">Address:</strong> {{
+                  data.studentInfo.address }}
+                </p>
+                <p class="mb-0">
+                  <strong class="pr-1">Phone Number:</strong> {{
+                  data.studentInfo.phone }}
+                </p>
+                <p class="mb-0">
+                  <strong class="pr-1">Email:</strong> {{ data.studentInfo.email
+                  }}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-8">
+            <div class="card shadow-sm">
+              <div class="card-header bg-transparent border-0">
+                <h3 class="mb-0">
+                  <i class="far fa-clone pr-1"></i>General Information
+                </h3>
+              </div>
+              <div class="card-body pt-0">
+                <table class="table table-bordered">
+                  <tr>
+                    <th width="30%">Major</th>
+                    <td>{{ data.studentInfo.major }}</td>
+                  </tr>
+                  <tr>
+                    <th width="30%">Course Started</th>
+                    <td>{{ data.studentInfo.starting_year }}</td>
+                  </tr>
+                  <tr>
+                    <th width="30%">Academic Standing</th>
+                    <td>{{ data.studentInfo.standing }}</td>
+                  </tr>
+                  <tr>
+                    <th width="30%">Current Year</th>
+                    <td>{{ data.studentInfo.year }}</td>
+                  </tr>
+                  <tr>
+                    <th width="30%">Total Attendance</th>
+                    <td>{{ data.studentInfo.total_attendance }}</td>
+                  </tr>
+                  <tr>
+                    <th width="30%">Last Attendance Time</th>
+                    <td>{{ data.studentInfo.last_attendance_time }}</td>
+                  </tr>
+                  <tr>
+                    <th width="30%">Time Elapsed</th>
+                    <td>{{ data.lastlogin }}</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div style="height: 26px"></div>
+
+          <div class="card shadow-sm">
+            <div class="card-header bg-transparent border-0">
+              <h3 class="mb-0"><i class="far fa-clone pr-1"></i>Notice</h3>
+            </div>
+            <div class="card-body pt-0">
+              <p>{{ data.studentInfo.content }}</p>
+            </div>
+          </div>
+          <button onclick="window.location.href='/student_login'">
+            Log Out
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

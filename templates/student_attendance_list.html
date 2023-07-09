@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Today's Attendance</title>
+    <link
+      href="{{ url_for('static', filename='styles/admin.css') }}"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <section class="attendance">
+        <div class="attendance-list">
+          <button class="home_button" onclick="window.location.href='/'">
+            Home
+          </button>
+          <h1>Today's Attendance</h1>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Major</th>
+                <th>Total Attendance</th>
+                <th>Last Attendance Time</th>
+                <th>Year</th>
+                <th>Time Elapsed (in hrs.)</th>
+              </tr>
+            </thead>
+            {% for i in range(data|length) %}
+            <tbody>
+              <tr>
+                <td>{{ data[i][0]['id'] }}</td>
+                <td>{{ data[i][0]['name'] }}</td>
+                <td>{{ data[i][0]['major'] }}</td>
+                <td>{{ data[i][0]['total_attendance'] }}</td>
+                <td>{{ data[i][0]['last_attendance_time'] }}</td>
+                <td>{{ data[i][0]['year'] }}</td>
+                <td>{{ data[i][2] // 3600 }}</td>
+              </tr>
+            </tbody>
+            {% endfor %}
+          </table>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

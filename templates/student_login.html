@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="{{ url_for('static', filename='styles/login.css') }}"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <title>Login</title>
+  </head>
+  <body>
+    <div class="center">
+      <h1>Login</h1>
+      <form action="/student_login" method="post">
+        <div class="txt_field">
+          <input type="text" name="id_number" required />
+          <span></span>
+          <label>ID Number</label>
+        </div>
+        <div class="txt_field">
+          <input type="email" name="email" required />
+          <span></span>
+          <label>Email</label>
+        </div>
+        <div class="txt_field">
+          <input type="password" name="password" required />
+          <span></span>
+          <label>Password</label>
+        </div>
+        <input type="submit" value="Login" />
+        <div class="bottom_text">
+          Forgot Password. Please contact your teacher or IT Team.
+          <br />
+        </div>
+        <div class="bottom_text">
+          {% if data %} {{ data }} {% endif %}
+          <br />
+        </div>
+      </form>
+      <button onclick="window.location.href='/'">Home</button>
+    </div>
+  </body>
+</html>

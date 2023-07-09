@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Face Recognition System</title>
+
+    <link
+      href="{{ url_for('static', filename='styles/student.css') }}"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"
+    />
+    <!-- Font Awesome CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      function saveEdits() {
+        var editElem = {
+          "name": document.getElementById("name").innerHTML,
+          "id": document.getElementById("id").innerHTML,
+          "dob": document.getElementById("dob").innerHTML,
+          "address": document.getElementById("address").innerHTML,
+          "phone": document.getElementById("phone").innerHTML,
+          "email": document.getElementById("email").innerHTML,
+          "major": document.getElementById("major").innerHTML,
+          "starting_year": document.getElementById("starting_year").innerHTML,
+          "standing": document.getElementById("standing").innerHTML,
+          "year": document.getElementById("year").innerHTML,
+          "total_attendance":
+            document.getElementById("total_attendance").innerHTML,
+          "last_attendance_time": document.getElementById(
+            "last_attendance_time"
+          ).innerHTML,
+          "hoursElapsed": document.getElementById("hoursElapsed").innerHTML,
+          "content": document.getElementById("content").innerHTML,
+        };
+
+        localStorage.setItem("userEdits", JSON.stringify(editElem));
+
+        data = localStorage.getItem("userEdits");
+
+        console.log(data);
+
+        $.ajax({
+          url: "/admin/save_changes",
+          type: "POST",
+          contentType: "application/json",
+          data: data,
+          success: function (response) {
+            console.log("Data sent successfully!");
+          },
+          error: function (error) {
+            console.log(error);
+          },
+        });
+      }
+
+      function delete_user() {
+        var id = document.getElementById("id").innerHTML;
+
+        localStorage.setItem("userId", JSON.stringify(id));
+
+        data = localStorage.getItem("userId");
+
+        console.log(data);
+
+        $.ajax({
+          url: "/admin/delete_user",
+          type: "POST",
+          contentType: "application/json",
+          data: data,
+          success: function (response) {
+            console.log("Data sent successfully!");
+          },
+          error: function (error) {
+            console.log(error);
+          },
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Edit Profile</h1>
+    <div class="student-profile py-4">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="card shadow-sm">
+              <div class="card-header bg-transparent text-center">
+                <img
+                  class="profile_img"
+                  src="{{ url_for('static', filename='Files/Images/'+ data.studentInfo.id +'.jpg') }}"
+                  alt="student dp"
+                />
+                <h3 contenteditable id="name">{{ data.studentInfo.name }}</h3>
+              </div>
+              <div class="card-body">
+                <p class="mb-0">
+                  <strong class="pr-1">Student ID:</strong
+                  ><span contenteditable id="id"
+                    >{{ data.studentInfo.id }}</span
+                  >
+                </p>
+                <p class="mb-0">
+                  <strong class="pr-1">Date of Birth:</strong>
+                  <span contenteditable id="dob"
+                    >{{ data.studentInfo.dob }}</span
+                  >
+                </p>
+                <p class="mb-0">
+                  <strong class="pr-1">Address:</strong>
+                  <span contenteditable id="address"
+                    >{{ data.studentInfo.address }}</span
+                  >
+                </p>
+                <p class="mb-0">
+                  <strong class="pr-1">Phone Number:</strong>
+                  <span contenteditable id="phone"
+                    >{{ data.studentInfo.phone }}</span
+                  >
+                </p>
+                <p class="mb-0">
+                  <strong class="pr-1">Email:</strong>
+                  <span contenteditable id="email"
+                    >{{ data.studentInfo.email }}</span
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-8">
+            <div class="card shadow-sm">
+              <div class="card-header bg-transparent border-0">
+                <h3 class="mb-0">
+                  <i class="far fa-clone pr-1"></i>General Information
+                </h3>
+              </div>
+              <div class="card-body pt-0">
+                <table class="table table-bordered">
+                  <tr>
+                    <th width="30%">Major</th>
+                    <td contenteditable id="major">
+                      {{ data.studentInfo.major }}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th width="30%">Course Started</th>
+                    <td contenteditable id="starting_year">
+                      {{ data.studentInfo.starting_year }}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th width="30%">Academic Standing</th>
+                    <td contenteditable id="standing">
+                      {{ data.studentInfo.standing }}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th width="30%">Current Year</th>
+                    <td contenteditable id="year">
+                      {{ data.studentInfo.year }}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th width="30%">Total Attendance</th>
+                    <td contenteditable id="total_attendance">
+                      {{ data.studentInfo.total_attendance }}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th width="30%">Last Attendance Time</th>
+                    <td contenteditable id="last_attendance_time">
+                      {{ data.studentInfo.last_attendance_time }}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th width="30%">Time Elapsed</th>
+                    <td contenteditable id="hoursElapsed">
+                      {{ data.lastlogin }}
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div style="height: 26px"></div>
+
+          <div class="card shadow-sm">
+            <div class="card-header bg-transparent border-0">
+              <h3 class="mb-0"><i class="far fa-clone pr-1"></i>Notice</h3>
+            </div>
+            <div class="card-body pt-0">
+              <p contenteditable id="content">{{ data.studentInfo.content }}</p>
+            </div>
+          </div>
+          <button onclick="saveEdits()">Save Edits</button>
+          <span></span>
+          <button class="delete" onclick="delete_user()">Delete</button>
+          <span></span>
+          <button class="back" onclick="window.location.href='/admin'">
+            Back
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

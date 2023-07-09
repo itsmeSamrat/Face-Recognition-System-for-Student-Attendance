@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Face Recognition System</title>
+
+    <link
+      href="{{ url_for('static', filename='styles/index.css') }}"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <body>
+    <h1>Face Recognition System</h1>
+    <h3>Sign In:</h3>
+    <div class="buttons">
+      <a href="student_login">
+        <button type="submit" class="mybutton1">Student</button>
+      </a>
+      <a href="admin_login">
+        <button type="submit" class="mybutton2">Admin</button>
+      </a>
+      <a href="student_attendance_list">
+        <button type="submit" class="mybutton3">Attendance List</button>
+      </a>
+    </div>
+    <div class="mainFrame">
+      <img src="{{url_for('video')}}" />
+    </div>
+  </body>
+</html>

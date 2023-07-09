@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Panel</title>
+    <link
+      href="{{ url_for('static', filename='styles/admin.css') }}"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <nav>
+        <ul>
+          <li>
+            <a href="/admin" class="logo">
+              <img
+                src="{{ url_for('static', filename='Files/Resources/admin_icon.jpg') }}"
+              />
+              <span class="nav-item">Admin</span>
+            </a>
+          </li>
+          <li>
+            <a href="/admin">
+              <i class="fas fa-menorah"></i>
+              <span class="nav-item">Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="/admin/add_user">
+              <i class="fas fa-database"></i>
+              <span class="nav-item">Add Record</span>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:location.reload();">
+              <i class="fas fa-chart-bar"></i>
+              <span class="nav-item">Attendance Records</span>
+            </a>
+          </li>
+          <li>
+            <a href="/admin_login" class="logout">
+              <i class="fas fa-sign-out-alt"></i>
+              <span class="nav-item">Log out</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <section class="attendance">
+        <div class="attendance-list">
+          <h1>Today's Attendance</h1>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Major</th>
+                <th>Total Attendance</th>
+                <th>Last Attendance Time</th>
+                <th>Year</th>
+                <th>Time Elapsed (in hrs.)</th>
+              </tr>
+            </thead>
+            {% for i in range(data|length) %}
+            <tbody>
+              <tr>
+                <td>{{ data[i][0]['id'] }}</td>
+                <td>{{ data[i][0]['name'] }}</td>
+                <td>{{ data[i][0]['major'] }}</td>
+                <td>{{ data[i][0]['total_attendance'] }}</td>
+                <td>{{ data[i][0]['last_attendance_time'] }}</td>
+                <td>{{ data[i][0]['year'] }}</td>
+                <td>{{ data[i][2] // 3600 }}</td>
+              </tr>
+            </tbody>
+            {% endfor %}
+          </table>
+        </div>
+      </section>
+      <form method="POST">
+        <button
+          onclick="location.href='/admin/admin_attendance_list'"
+          class="button_student"
+          name="button_student"
+          value="VALUE1"
+        >
+          Clear Student Attendance List
+        </button>
+
+        <button
+          onclick="location.href='/admin/admin_attendance_list'"
+          class="button_admin"
+          name="button_admin"
+          value="VALUE2"
+        >
+          Clear Above Attendance List
+        </button>
+      </form>
+    </div>
+  </body>
+</html>

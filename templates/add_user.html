@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Panel</title>
+    <link
+      href="{{ url_for('static', filename='styles/admin.css') }}"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link
+      href="{{ url_for('static', filename='styles/add_user.css') }}"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <nav>
+        <ul>
+          <li>
+            <a href="/admin" class="logo">
+              <img
+                src="{{ url_for('static', filename='Files/Resources/admin_icon.jpg') }}"
+              />
+              <span class="nav-item">Admin</span>
+            </a>
+          </li>
+          <li>
+            <a href="/admin">
+              <i class="fas fa-menorah"></i>
+              <span class="nav-item">Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:location.reload();">
+              <i class="fas fa-database"></i>
+              <span class="nav-item">Add Record</span>
+            </a>
+          </li>
+          <li>
+            <a href="admin_attendance_list">
+              <i class="fas fa-chart-bar"></i>
+              <span class="nav-item">Attendance Records</span>
+            </a>
+          </li>
+          <li>
+            <a href="/admin_login" class="logout">
+              <i class="fas fa-sign-out-alt"></i>
+              <span class="nav-item">Log out</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <br />
+      <br />
+      <section class="container1">
+        <header>Add Student</header>
+        <form
+          action="/admin/add_user"
+          method="post"
+          class="form"
+          enctype="multipart/form-data"
+        >
+          <div class="input-box">
+            <label>ID</label>
+            <input
+              type="text"
+              placeholder="Enter the student unique ID"
+              name="id"
+              required
+            />
+          </div>
+          <div class="input-box">
+            <label>Full Name</label>
+            <input
+              type="text"
+              placeholder="Enter full name"
+              name="name"
+              required
+            />
+          </div>
+          <div class="input-box">
+            <label>Password</label>
+            <input
+              type="password"
+              placeholder="Enter the password"
+              name="password"
+              required
+            />
+          </div>
+          <div class="input-box">
+            <label>Email Address</label>
+            <input
+              type="email"
+              placeholder="Enter email address"
+              name="email"
+              required
+            />
+          </div>
+          <div class="column">
+            <div class="input-box">
+              <label>Phone Number</label>
+              <input
+                type="text"
+                placeholder="Enter phone number"
+                name="phone"
+                required
+              />
+            </div>
+            <div class="input-box">
+              <label>Birth Date</label>
+              <input
+                type="date"
+                placeholder="Enter birth date"
+                name="dob"
+                required
+              />
+            </div>
+          </div>
+          <div class="input-box address">
+            <label>Address</label>
+            <div class="column">
+              <input
+                type="text"
+                placeholder="Enter your city"
+                name="city"
+                required
+              />
+              <div class="select-box">
+                <select name="country">
+                  <option hidden>Country</option>
+                  <option>Canada</option>
+                  <option>USA</option>
+                  <option>India</option>
+                  <option>Nepal</option>
+                  <option>Japan</option>
+                  <option>UK</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="input-box">
+            <label>Major</label>
+            <input
+              type="text"
+              placeholder="Enter the Major"
+              name="major"
+              required
+            />
+          </div>
+          <div class="input-box">
+            <label>Starting Year</label>
+            <input
+              type="number"
+              placeholder="Enter the Starting Year"
+              name="starting_year"
+              required
+            />
+          </div>
+          <div class="input-box">
+            <label>Current Year</label>
+            <input
+              type="number"
+              placeholder="Enter the Current Year"
+              name="year"
+              required
+            />
+          </div>
+          <div class="input-box">
+            <label>Standing</label>
+            <input
+              type="text"
+              placeholder="Enter the Grades"
+              name="standing"
+              required
+            />
+          </div>
+
+          <div class="input-box">
+            <label>Total Attendance</label>
+            <input
+              type="number"
+              placeholder="Enter the Attendance Number"
+              name="total_attendance"
+              required
+            />
+          </div>
+          <div class="column">
+            <div class="input-box">
+              <label>Last Attendance Date</label>
+              <input
+                type="date"
+                placeholder="Enter the Last Attendance Date (YYYY-MM-DD)"
+                name="last_attendance_date"
+                required
+              />
+            </div>
+
+            <div class="input-box">
+              <label>Last Attendance Time</label>
+              <input
+                type="time"
+                placeholder="Enter the Last Attendance Time (HH:MM:SS)"
+                name="last_attendance_time"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="input-box">
+            <label>Notes</label>
+            <input
+              type="textarea"
+              placeholder="Enter any notes"
+              name="content"
+              required
+            />
+          </div>
+
+          <div class="input-box">
+            <label>Upload Image</label>
+            <input
+              type="file"
+              placeholder="Upload the new student image"
+              name="image"
+              value="image"
+              required
+            />
+          </div>
+          <button>Submit</button>
+        </form>
+      </section>
+    </div>
+  </body>
+</html>
