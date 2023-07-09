@@ -64,7 +64,3 @@ Email : [itsmesamratthapa@gmail.com](mailto:itsmesamratthapa@gmail.com)
 <!-- Back to the top -->
 
 [Return Back to Top ⬆️](#getting-started)
-
-```
-
-```
