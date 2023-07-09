@@ -10,7 +10,7 @@
 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&duration=1500&pause=200&center=true&vCenter=true&multiline=true&width=435&height=100&lines=Face+Recognition+System+;for+Student+Attendance">
 </div>
 
-<h2 align="center"> Effortlessly track student attendance with our reliable Face Recognition System. </h2>
+<h2 align="center"> Effortlessly track student attendance with reliable Face Recognition System. </h2>
 
 ## Description
 
