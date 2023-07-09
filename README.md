@@ -17,6 +17,8 @@ Hello, everyone. This is my first attempt at creating a Flask web application wi
 
 Also, one limitation of this application is the routes in flask application are not secured meaning we can access the restricted data by simply pasting the routes(links). I tried different approaches like using decorators like @login_required and creating own middleware for checking the tokens which are send by the firebase authentication app also using JWT tokens. So, simply saying, being my first flask project, there was not good planning for the project. In the upcoming, project will keep that in mind.
 
+Check out the demo video of the web application by clicking [HERE](https://youtu.be/Zc-t0mjkiWk)
+
 [getting started](#getting-started)
 
 ## Getting Started
@@ -31,7 +33,7 @@ Also, one limitation of this application is the routes in flask application are 
 - Proceed to set up your Firebase database. Download the required credentials from Firebase and save them as **serviceAccountKey.json** .
 - Locate the **initial_database.py** file in the misc directory. Open it and find the designated section to paste your database URL. If your setup and credentials are correct, the script will add the data to the database.
 - Once you've created the database, run the **initial_encoding.py** Python file. Ensure that you've placed the image file in the **static/Files/Image** directory and named it with the corresponding user ID from the database. This allows us to associate user images with their unique identification numbers. Additionally, this encoding step will generate a pickle file used for the face recognition model.
-- With the previous steps completed, execute the **webapp.py** script. If all the credentials and dependencies are correctly set up, the web application should start running. You can refer to the **[demo](https://youtu.be/Zc-t0mjkiWk)** for a visual representation.
+- With the previous steps completed, execute the **webapp.py** script. If all the credentials and dependencies are correctly set up, the web application should start running. You can refer to the **[demo video](https://youtu.be/Zc-t0mjkiWk)** for a visual representation.
 - Lastly, show your support by giving the repository a star! 🙂😁
 
 Thank you. ✌✌
