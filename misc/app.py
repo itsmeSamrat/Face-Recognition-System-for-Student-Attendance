@@ -74,7 +74,7 @@ while True:
     imgBackground[162 : 162 + 480, 55 : 55 + 640] = img
     imgBackground[44 : 44 + 633, 808 : 808 + 414] = imgModeList[modeType]
 
-    if faceCurrentFrame:  
+    if faceCurrentFrame:
         for encodeFace, faceLocation in zip(encodeCurrentFrame, faceCurrentFrame):
             matches = face_recognition.compare_faces(
                 encodedFaceKnown, encodeFace
@@ -107,7 +107,7 @@ while True:
                     counter = 1
                     modeType = 1
 
-            else: 
+            else:
                 cvzone.putTextRect(
                     imgBackground, "Face Detected", (65, 200), thickness=2
                 )

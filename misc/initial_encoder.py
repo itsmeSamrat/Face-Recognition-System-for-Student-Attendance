@@ -7,17 +7,18 @@ from firebase_admin import credentials
 from firebase_admin import db
 from firebase_admin import storage
 
-cred = credentials.Certificate("serviceAccountKey.json")
+cred = credentials.Certificate("../serviceAccountKey.json")
 firebase_admin.initialize_app(
     cred,
     {
         "databaseURL": "<paste here>",
         # database URL
+        "storageBucket": "<paste here>",
     },
 )
 
 # student images
-folderPath = "static/Files/Images"
+folderPath = "../static/Files/Images"
 imgPathList = os.listdir(folderPath)
 print(imgPathList)
 imgList = []
