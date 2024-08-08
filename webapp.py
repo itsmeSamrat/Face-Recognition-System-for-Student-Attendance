@@ -393,7 +393,7 @@ def admin_attendance_list():
 #########################################################################################################################
 
 def add_image_database():
-    folderPath = "static/Files/Images"
+    folderPath = "./static/Files/Images"
     imgPathList = os.listdir(folderPath)
     imgList = []
     studentIDs = []
