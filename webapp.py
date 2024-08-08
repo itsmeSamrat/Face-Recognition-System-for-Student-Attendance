@@ -32,7 +32,7 @@ bucket = storage.bucket()
 
 def dataset(id):
     studentInfo = db.reference(f"Students/{id}").get()
-    blob = bucket.get_blob(f"static/Files/Images/{id}.jpg")
+    blob = bucket.get_blob(f"./static/Files/Images/{id}.png")
     array = np.frombuffer(blob.download_as_string(), np.uint8)
     imgStudent = cv2.imdecode(array, cv2.COLOR_BGRA2BGR)
     datetimeObject = datetime.strptime(
@@ -448,7 +448,7 @@ def add_user():
 
     if request.method == "POST":
         image = request.files["image"]
-        filename = f"{'static/Files/Images'}/{id}.jpg"
+        filename = f"{'./static/Files/Images'}/{id}.png"
         image.save(os.path.join(filename))
 
     studentIDs, imgList = add_image_database()
@@ -547,7 +547,7 @@ def save_changes():
 
 
 def delete_image(student_id):
-    filepath = f"static/Files/Images/{student_id}.jpg"
+    filepath = f"./static/Files/Images/{student_id}.png"
 
     os.remove(filepath)
 
