@@ -20,6 +20,8 @@ Also, one limitation of this application is the routes in the Flask application 
 
 Check out the demo video of the web application by clicking [HERE](https://youtu.be/Zc-t0mjkiWk)
 
+Check out the installation guide video by clicking [HERE](https://www.youtube.com/watch?v=g1A_u9tW9V4)
+
 [getting started](#getting-started)
 
 ## Getting Started
